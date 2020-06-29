@@ -21,6 +21,8 @@ app.get('/', function(req, res) {
     //check to see if user is logged in
     res.render('index')
 })
+//include auth controller
+app.use('/auth', require('./controllers/auth'));
 //initizalize app on port
 app.listen(process.env.PORT || 3000, function(){
     console.log(`listening on ${process.env.PORT}`)
