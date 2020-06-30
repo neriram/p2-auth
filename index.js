@@ -6,10 +6,11 @@ const helmet = require('helmet');
 const session = require('express-session');
 const flash = require('flash');
 //passport, and custom middleware, sequelize sesssions, 
-const passport = require('./config/ppConfig')
-const db = require('./models')
+const passport = require('./config/ppConfig');
+const db = require('./models');
 //wamt tp add a link to our customer middleware for isLoggedIn
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const isLoggedIn = require('./middleware/isLoggedIn');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // app setup
 const app = Express();
@@ -51,6 +52,12 @@ app.use(function(req, res, next) {
 app.get('/', function(req, res) {
     //check to see if user is logged in
     res.render('index')
+})
+
+//auth locked route
+app.get('/profile',isLoggedIn, function(req, res) {
+    res.render('profile');
+    
 })
 //include auth controller
 app.use('/auth', require('./controllers/auth'));
