@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
             //before new record creation
             beforeCreate: function(createdUser, options) {
             //take inputed password
-                if (cratedUser && createdUser.password){
+                if (createdUser && createdUser.password){
                 //hash password 
                     let hash = bcrypt.hashSync(createdUser.password, 12);
                     createdUser.password = hash;
