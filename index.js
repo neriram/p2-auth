@@ -8,7 +8,7 @@ const flash = require('flash');
 //passport, and custom middleware, sequelize sesssions, 
 const passport = require('./config/ppConfig');
 const db = require('./models');
-//wamt tp add a link to our customer middleware for isLoggedIn
+//want to add a link to our customer middleware for isLoggedIn
 const isLoggedIn = require('./middleware/isLoggedIn');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -27,7 +27,7 @@ const sessionStore = new SequelizeStore({
     expiration: 1000 * 60 * 30
     
 })
-app.use(session ({
+app.use(session({
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
     resave: false,
